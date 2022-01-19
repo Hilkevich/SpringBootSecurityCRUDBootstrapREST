@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>One User</title>
+</head>
+
+<body>
+
+<p th:text="${user.getUsername() + ' ' + user.getSurname()}">VALUE</p>
+<p th:text="${'id: ' + user.getId()}">VALUE</p>
+
+    <div th:each="role: ${user.getRoles()}" >
+        <span th:if="(${role.getName()} == 'ROLE_ADMIN')" th:utext="admin"></span>
+        <span th:if="(${role.getName()} == 'ROLE_USER')" th:utext="user"></span>
+    </div>
+
+<br/>
+<form th:href="EDIT" th:action="@{/admin/{id}/edit(id=${user.getId()})}">
+    <input type="submit" value="edit"/>
+</form>
+
+<form th:method="DELETE" th:action="@{/admin/{id}(id=${user.getId()})}">
+    <input type="submit" value="delete"/>
+</form>
+
+<br/>
+<hr/>
+<a th:href="@{/logout}">LOGOUT</a>
+
+</body>
+</html>

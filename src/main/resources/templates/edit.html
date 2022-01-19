@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update user</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/admin/users/{id}(id=${user.getId()})}" th:object="${user}">
+    <lable for="username">name:</lable>
+    <input type="text" th:field="*{username}" id="username"/>
+    <br/>
+    <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username error</div>
+
+    <br/>
+    <lable for="surname">surname:</lable>
+    <input type="text" th:field="*{surname}" id="surname"/>
+    <br/>
+    <div style="color:red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname error</div>
+
+    <br/>
+    <lable for="password">password:</lable>
+    <input type="text" th:field="*{password}" id="password"/>
+    <br/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</div>
+
+    <br/>
+    <lable for="roles">roles (1-admin, 2-user):</lable>
+    <input type="text" th:field="*{roles}" name="roles"/>
+    <br/>
+
+    <br/>
+    <input type="submit" value="Update!"/>
+    <br/>
+
+    <br/>
+    <hr/>
+    <a th:href="@{/logout}">LOGOUT</a>
+
+</form>
+
+</body>
+</html>
