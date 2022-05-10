@@ -19,7 +19,7 @@ public class User implements UserDetails {
     @Size(min = 2, max = 30, message = "Username should be between 2 and 30 characters")
     private String username;
 
-    @Size(min = 2, max = 99, message = "Name should be between 2 and 30 characters")
+    @Size(min = 2, max = 99, message = "Password should be between 2 and 30 characters")
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -31,8 +31,8 @@ public class User implements UserDetails {
 //    private String name;
 
 
-    @NotEmpty(message = "Name should not be empty")
-    @Size(min = 2, max = 30, message = "Name should be between 2 and 30 characters")
+    @NotEmpty(message = "Surname should not be empty")
+    @Size(min = 2, max = 30, message = "Surname should be between 2 and 30 characters")
     private String surname;
 
 

@@ -11,6 +11,6 @@ public class MvcConfig implements WebMvcConfigurer {
     они никак не обрабатываются,а просто возвращаются сервером.*/
 
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/admin").setViewName("admin");
+        registry.addViewController("/admin").setViewName("adminPage");
     }
 }
