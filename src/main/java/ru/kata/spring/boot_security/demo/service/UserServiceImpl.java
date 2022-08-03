@@ -11,7 +11,6 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl {                     // класс-обертка над UserRepositories!
 
-
     final
     UserRepository userRepository;
 
@@ -24,17 +23,14 @@ public class UserServiceImpl {                     // класс-обертка 
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
-
     // найти всех.
-    public List<User> allUsers() {                                                          // find all.
+    public List<User> allUsers() {
         return userRepository.findAll();
     }
-
 
     // найти юзера по id.
     public User findUserById(Long id) {
@@ -65,7 +61,13 @@ public class UserServiceImpl {                     // класс-обертка 
     }
 
     // обновить-изменить юзера.
-    public User update(User user) {                                                          //update.
+//    public User update(User user, long id) {
+//        return userRepository.save(user);
+//    }
+//}
+
+// обновить-изменить юзера.
+    public User update(User user) {
         return userRepository.save(user);
     }
 }

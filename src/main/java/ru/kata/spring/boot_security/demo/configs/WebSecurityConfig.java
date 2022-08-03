@@ -52,11 +52,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/admin/**").hasRole("ADMIN")                               //.permitAll() вместо .hasRole("ADMIN"), чтобы выключить секъюрность!
+                .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")               //.permitAll() вместо .hasAnyRole("USER","ADMIN"), чтобы выключить секъюрность!
                 .antMatchers("/").permitAll()
                 //все остальные страницы требуют аутентификации
-                .anyRequest().authenticated()
+                .anyRequest().authenticated()                                                       //.permitAll() вместо .authenticated(), чтобы выключить секъюрность!
                 .and()
                 //настройка для входа в систему
                 .formLogin()
@@ -64,6 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
+//              .logoutUrl("/perform_logout")
                 .permitAll();
     }
 
